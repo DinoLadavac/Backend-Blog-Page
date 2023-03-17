@@ -1,0 +1,30 @@
+article {
+    background: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+    color: black;
+    max-width: 500px;
+    margin:auto;
+    line-height: 2.0;
+
+}
+h1{
+    text-align: center;
+    color: blue;
+    padding-bottom: 30px;
+    max-width: 400px;
+    margin:auto;
+}
+
+article + article {
+    margin-top: 70px;
+    border-top: 1px solid #ABABAB;
+    padding-top: 20px;
+}
+
+.backarrow{
+    margin-left: 30px;
+    padding-bottom: 30px;
+    font-size: 34px;
+    text-decoration: none;
+    color: red;
+}
