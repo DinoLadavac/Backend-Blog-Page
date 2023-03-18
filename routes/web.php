@@ -25,8 +25,8 @@ Route::get('/', function () {
 });
 
 //Route of every post that shows more details of chosen posts
-Route::get('post/{id_post}', function ($slug) 
+Route::get('post/{id_post}', function ($id) 
 {
     //id_post is used to open the chosen post, method find tries to find the post if it is available
-    return view('post', ["id_post" =>  Post::find($slug)]);
-})->whereAlphaNumeric("id_post"); //Constraint in form of a regular expression that only allows aplpha numeric characters to be part of the route
+    return view('post', ["id_post" =>  Post::findorfail($id)]);
+});
