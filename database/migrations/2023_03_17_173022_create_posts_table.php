@@ -9,10 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    //Function that defines the attributes of the model Post
     public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unique();
+            $table->foreignId('category_id');
+            $table->foreignId('user_id');
             $table->string('title');
             $table->text('excerpt');
             $table->text('body');

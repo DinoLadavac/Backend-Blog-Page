@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\User;
 
 
 /*
@@ -19,14 +21,27 @@ function alert_redirect($message)
     echo "<script>alert('$message');window.location='/';</script>";
 }
 
-//Route of generic root "Mainpage" where all posts can be seen
+//Route of generic root "Mainpage" where all posts can be seen sorted from newest to oldest
 Route::get('/', function () {
-    return view("all_posts", ["blog_posts" =>  Post::all()]);
+    return view("all_posts", ["blog_posts" =>  Post::latest("published_at")->with("tag", "author")->get()]);
 });
 
 //Route of every post that shows more details of chosen posts
-Route::get('post/{id_post}', function ($id) 
+Route::get('post/{id_post}', function (Post $id_post) 
 {
-    //id_post is used to open the chosen post, method find tries to find the post if it is available
-    return view('post', ["id_post" =>  Post::findorfail($id)]);
+    //id_post is used to open the chosen post that has the same id as the one user is trying to reach
+    return view('post', ["id_post" =>  $id_post]);
+});
+
+//Route that displays all posts from specific category
+Route::get('tags/{tag:name}', function (Category $tag)
+{
+    return view('all_posts', ["blog_posts" =>  $tag->posts->load(["tag", "author"])]);
+});
+
+
+//Route that displays all posts from the author
+Route::get('authors/{author:username}', function (User $author)
+{
+    return view('all_posts', ["blog_posts" =>  $author->posts->load(["tag", "author"])]);
 });
