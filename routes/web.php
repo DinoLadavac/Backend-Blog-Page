@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\User;
+use App\Http\Controllers\PostController;
 
 
 /*
@@ -14,26 +15,12 @@ use App\Models\User;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//Function to alert the user u are rederecting him to the main page -> not yet 
-function alert_redirect($message)
-{
-    echo "<script>alert('$message');window.location='/';</script>";
-}
-
 //Route of generic root "Mainpage" where all posts can be seen sorted from newest to oldest
-Route::get('/', function () {
-    return view("all_posts", ["blog_posts" =>  Post::latest("published_at")->with("author")->get()]);
-});
+Route::get('/', [PostController::class, "index"]); //Using post controller
 
 //Route of every post that shows more details of chosen posts
-Route::get('post/{id_post}', function (Post $id_post) 
-{
-    //id_post is used to open the chosen post that has the same id as the one user is trying to reach
-    return view('post', ["id_post" =>  $id_post]);
-});
+Route::get('post/{id_post}', [PostController::class, "showPost"]);
+
 
 //Route that displays all posts from the author
-Route::get('authors/{author:username}', function (User $author)
-{
-    return view('all_posts', ["blog_posts" =>  $author->posts->load("author")]);
-});
+Route::get('authors/{author:username}', [PostController::class, "showAuthorsPosts"]);

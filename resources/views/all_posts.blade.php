@@ -10,9 +10,9 @@
 
         <!-- Every article has a title and a description. The title is also a link to the post's page-->
         <article>
-            <h1 class="posttitle">
+            <div class="posttitle">
                 <a  href="/post/{{ $post->id }}">{{ $post->title }}</a> 
-            </h1>
+            </div>
             <!-- If tags aren't empty than print them, else skip this section-->
             @if($post_tags[0]!=="")
             <div class="parent">
@@ -34,4 +34,15 @@
 
 @section ("title") <!-- This section right now is just used for a title -->
 This is a Blog page
+@endsection
+
+ @section ("search")
+ <div class="parent search" style=" margin-left: auto; margin-right: auto;">
+ <p class="child">Search:</p>
+ <div class="child relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2" >
+        <form class="searchbar" method="GET" action="#">
+            <input type="text" name="search" placeholde="Dind something"
+                class="bg-transparent placeholder-black font-semibold text-sm" value="{{ request('search') }}">
+    </form>
+</div>
 @endsection
