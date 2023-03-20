@@ -5,7 +5,6 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use \App\Models\User;
-use \App\Models\Category;
 use \App\Models\Post;
 
 class DatabaseSeeder extends Seeder
@@ -15,12 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $user=User::factory()->create([
-            "name" => "Anonymous"
-        ]);
-        //Create 5 posts, users and categories
-        Post::factory(5)->create([
-            "user_id" => $user->id
-        ]);
+        $user=User::factory()->create();
+        //Create 5 by the author
+        Post::factory(5)->create(
+            [ "user_id" => $user->id]
+        );
     }
 }
