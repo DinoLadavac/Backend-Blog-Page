@@ -1,7 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
-use App\Models\Category;
 use App\Models\User;
 
 
@@ -23,7 +22,7 @@ function alert_redirect($message)
 
 //Route of generic root "Mainpage" where all posts can be seen sorted from newest to oldest
 Route::get('/', function () {
-    return view("all_posts", ["blog_posts" =>  Post::latest("published_at")->with("tag", "author")->get()]);
+    return view("all_posts", ["blog_posts" =>  Post::latest("published_at")->with("author")->get()]);
 });
 
 //Route of every post that shows more details of chosen posts
@@ -33,15 +32,8 @@ Route::get('post/{id_post}', function (Post $id_post)
     return view('post', ["id_post" =>  $id_post]);
 });
 
-//Route that displays all posts from specific category
-Route::get('tags/{tag:name}', function (Category $tag)
-{
-    return view('all_posts', ["blog_posts" =>  $tag->posts->load(["tag", "author"])]);
-});
-
-
 //Route that displays all posts from the author
 Route::get('authors/{author:username}', function (User $author)
 {
-    return view('all_posts', ["blog_posts" =>  $author->posts->load(["tag", "author"])]);
+    return view('all_posts', ["blog_posts" =>  $author->posts->load("author")]);
 });

@@ -14,14 +14,13 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id()->unique();
-            $table->foreignId('category_id');
-            $table->foreignId('user_id');
             $table->string('title');
+            $table->foreignId('user_id');
             $table->text('excerpt');
-            $table->text('body');
+            $table->text('body'); 
+            $table->string('tags',50);
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
-
         });
     }
 

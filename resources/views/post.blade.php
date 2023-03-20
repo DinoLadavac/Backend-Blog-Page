@@ -1,16 +1,24 @@
+<!--- Turn tags that are strings into array -->
+@php
+    $post_tags = explode(", ", $id_post->tags); 
+@endphp
 @extends("layout") <!-- Extend layout where repeating lines are located-->
-
-
 @section("default_section")<!-- extend in layout after section mark "default section" -->
 <article>
     <!-- Load the title od the post. --> 
-    <h1 class="posttitle">{{ $id_post->title }}</h1>
-    <div>
-    <a class="taglink" href="/tags/{{$id_post->tag->name}}"><div class="tag"><strong>{{$id_post->tag->name}}</strong></div></a>  <!-- Tag section -->
+    @section("title"){{ $id_post->title }}@endsection
+    <div class="parent">
+    <!-- Check if there are tags -->
+    @if($post_tags[0]!=="")
+    <p class="child">Tags:</p>
+    @foreach ($post_tags as $tag)
+    <div class="tag"><strong>{{$tag}}</strong></div>   <!-- Tag section -->
+    @endforeach
+    @endif
+    </div>
     <p></p>
     <!-- Load the context od the post. --> 
     <p class=postbody>{!! $id_post->body !!}</p>
-    </div>
 <p><strong> by <a href="/authors/{{$id_post->author->username}}">{{$id_post->author->name}}</a></strong></p> <!-- Author section -->
 </article>
 <!-- A way to get back to main page intuitively-->

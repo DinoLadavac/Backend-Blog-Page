@@ -16,7 +16,6 @@ h1{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size:70px;
 }
-
 article + article {
     margin-top: 70px;
     border-top: 1px solid #ABABAB;
@@ -33,19 +32,15 @@ article + article {
 .tag{
     text-decoration: none;
     background-color: #0E3C45;
+    color: lightgoldenrodyellow;
     font-family: Arial, Helvetica, sans-serif;
     height: 40px;
     width: 100px;
     text-align: center;
     border-radius: 10px 10px 10px 10px ;
     overflow: hidden;
+    display: inline-block;
    
-}
-.taglink
-{
-    text-decoration: none;
-    color: gainsboro;
-
 }
 .posttitle
 {
@@ -61,4 +56,13 @@ article + article {
 .postbody
 {
     color: #51504b;
+}
+.parent
+{
+    white-space: nowrap;
+}
+.child
+{
+    display: inline-block;
+    text-align: center;
 }

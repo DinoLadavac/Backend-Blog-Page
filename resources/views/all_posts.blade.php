@@ -1,14 +1,28 @@
+
 @extends ("layout") <!-- Extend layout where repeating lines are located-->
 
 @section ("default_section") <!-- extend in layout after section mark "default section" -->
-
-    <!-- Every article has a title and a description. The title is also a link to the post's page-->
+    <!--- Turn tags that are strings into array -->
     @foreach ($blog_posts as $post)
+        @php
+            $post_tags = explode(", ", $post->tags); 
+        @endphp
+
+        <!-- Every article has a title and a description. The title is also a link to the post's page-->
         <article>
             <h1 class="posttitle">
                 <a  href="/post/{{ $post->id }}">{{ $post->title }}</a> 
             </h1>
-            <a class="taglink" href="/tags/{{$post->tag->name}}"><div class="tag"><strong>{{$post->tag->name}}</strong></div></a>       <!-- Tag section -->   
+            <!-- If tags aren't empty than print them, else skip this section-->
+            @if($post_tags[0]!=="")
+            <div class="parent">
+            <p class="child">Tags: </p>
+            @foreach ($post_tags as $tag) <!-- print every item in tag array-->
+            <div class="tag"><strong>{{$tag}}</strong></div>   <!-- Tag section -->
+            @endforeach 
+            </div>  
+            @endif
+
             <p></p> 
             <div class="postbody">
                 {{ $post->excerpt }}
