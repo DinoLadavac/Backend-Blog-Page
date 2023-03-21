@@ -27,9 +27,12 @@
             <div class="postbody">
                 {{ $post->excerpt }}
             </div>
-            <p>by <a href="/authors/{{$post->author->username}}">{{$post->author->name}}</a></p> <!-- Author section -->
+            <p>by <a href="/authors/{{$post->author->username}}", class="link">{{$post->author->name}}</a></p> <!-- Author section -->
         </article>
     @endforeach
+    <br>
+    <div style="max-width: 900px; margin:auto; ">{{ $blog_posts->links() }}</div>
+    <br>
 @endsection
 
 @section ("title") <!-- This section right now is just used for a title -->

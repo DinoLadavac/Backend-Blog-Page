@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username'
     ];
 
     /**
@@ -41,8 +42,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-
+    //mutator
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes["password"] = bcrypt($password); //encrypt the password in db
+    }
     public function posts() // relationship with Post model
     {
         return $this->hasMany(Post::class);

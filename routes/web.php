@@ -3,7 +3,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\User;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\LogOutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,10 @@ Route::get('post/{id_post}', [PostController::class, "showPost"]);
 
 //Route that displays all posts from the author
 Route::get('authors/{author:username}', [PostController::class, "showAuthorsPosts"]);
+
+//Route to register a user
+Route::get('register', [RegistrationController::class, 'create'])->middleware("guest");
+//Route to store the registrated use
+Route::post('register', [RegistrationController::class, 'store'])->middleware("guest");
+//Rout to logut
+Route::post('logout',[LogOutController::class,'destroy']);

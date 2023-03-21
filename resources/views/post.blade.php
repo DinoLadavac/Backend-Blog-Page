@@ -7,6 +7,7 @@
 <article>
     <!-- Load the title od the post. --> 
     @section("title"){{ $id_post->title }}@endsection
+    <p>Published: {{$id_post->created_at}}</p>
     <div class="parent">
     <!-- Check if there are tags -->
     @if($post_tags[0]!=="")
@@ -19,7 +20,7 @@
     <p></p>
     <!-- Load the context od the post. --> 
     <p class=postbody>{!! $id_post->body !!}</p>
-<p><strong> by <a href="/authors/{{$id_post->author->username}}">{{$id_post->author->name}}</a></strong></p> <!-- Author section -->
+<p><strong> by <a href="/authors/{{$id_post->author->username}}", class="link">{{$id_post->author->name}}</a></strong></p> <!-- Author section -->
 </article>
 <!-- A way to get back to main page intuitively-->
 <a class="backarrow" href="/"><--</a>

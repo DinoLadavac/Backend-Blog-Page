@@ -11,7 +11,7 @@ class PostController extends Controller
     public function index()
     {
         
-        return view("all_posts", ["blog_posts" =>  Post::latest()->filter(request(['search']))->get()]);
+        return view("all_posts", ["blog_posts" =>  Post::latest()->filter(request(['search']))->paginate(6)->withQueryString()]);
     }
 
     public function showPost(Post $id_post)
@@ -21,6 +21,9 @@ class PostController extends Controller
     }
     public function showAuthorsPosts(User $author)
     {
-        return view('all_posts', ["blog_posts" =>  $author->posts->load("author")]);
+        $blog_posts = $author->posts()->orderByDesc("created_at")->with("author")->paginate(3)->withQueryString();
+
+        return view('all_posts', ["blog_posts" => $blog_posts]);
+        //return view('all_posts', ["blog_posts" =>  $author->posts->sortByDesc("created_at")->load("author")]); //Return sorted latest to oldest
     }
 }

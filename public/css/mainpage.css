@@ -8,7 +8,7 @@ article {
     width:auto;
 
 }
-h1{
+.main_title{
     text-align: center;
     color: lightslategray;
     padding-bottom: 30px;
@@ -68,6 +68,8 @@ article + article {
 .child
 {
     display: inline-block;
+    max-width: 300px;
+    margin:auto;
 }
 .search
 {
@@ -75,4 +77,27 @@ article + article {
     margin-right:auto;
     text-align: center;
     margin:auto;
+}
+.link
+{
+    text-decoration: underline;
+    color:darkred;
+}
+.nav_buttons
+{
+    margin-top: 3%;
+    background-color: lightgray;
+    color: black;
+    border-radius: 10%;
+    text-decoration: none;
+}
+.popup
+{
+    background-color: lightgray;
+    color: black;
+    border-radius: 3;
+    max-width: 400px;
+    position: fixed;
+    bottom: 30px;
+    right: 10px;
 }
