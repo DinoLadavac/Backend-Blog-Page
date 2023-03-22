@@ -25,4 +25,10 @@ h1
 {
     color: red;
     font-size: 10;
+    margin: auto;
+}
+.checkboxes
+{
+    max-width: 400px;
+    margin: auto;
 }

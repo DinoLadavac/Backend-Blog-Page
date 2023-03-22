@@ -101,3 +101,9 @@ article + article {
     bottom: 30px;
     right: 10px;
 }
+.userButtons
+{
+    color: white;
+    background-color: lightseagreen;
+    border-radius: 3px;
+}

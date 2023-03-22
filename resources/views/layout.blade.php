@@ -12,13 +12,12 @@
     <div class="child nav_buttons">
     <form method="POST" action="/logout">
         @csrf
-        <button type="submit">Log out</button></div>
+        <button>Log out</button></form></div>
+        <button class="userButtons"><a href="/logged/create">Create a post</a></button>
         <span>Welcome {{auth()->user()->name}}<span>
     @else
-        <div class="child nav_buttons">
-        <button><a href="/register">Register</a></button></div>
-        <div class="child nav_buttons"><button><a href="/login">Login</a></button></div>
-        </div>
+        <button><a href="/register">Register</a></button>
+        <button><a href="/login">Login</a></button>
     @endguest
     <h1 class="main_title">@yield("title")</h1> <!-- Start a section for title -->
     @yield("search")

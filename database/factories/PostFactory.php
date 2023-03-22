@@ -15,7 +15,6 @@ class PostFactory extends Factory
      *
      * @return array<string, mixed>
      */
-
      //Function that defines types of attributes for factory faker
     public function definition(): array
     {

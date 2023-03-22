@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable  = ["title", "excerpt", "body","tags"]; // Assigning the attributes that a user can fill in
+    protected $fillable  = ["title", "excerpt", "body","tags","user_Id"]; // Assigning the attributes that a user can fill in
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, fn($query, $search) =>

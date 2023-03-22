@@ -5,6 +5,8 @@ use App\Models\User;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\LogOutController;
+use App\Http\Controllers\LogInController;
+use App\Http\Controllers\LoggedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +32,13 @@ Route::get('authors/{author:username}', [PostController::class, "showAuthorsPost
 Route::get('register', [RegistrationController::class, 'create'])->middleware("guest");
 //Route to store the registrated use
 Route::post('register', [RegistrationController::class, 'store'])->middleware("guest");
-//Rout to logut
-Route::post('logout',[LogOutController::class,'destroy']);
+//Route to log out
+Route::post('logout',[LogOutController::class,'destroy'])->middleware('auth');
+//Route to log in
+Route::get('login',[LogInController::class,'create'])->middleware('guest');
+//Post Route to log in
+Route::post('login',[LogInController::class,'store'])->middleware('guest');
+//Login create post
+Route::get('/logged/create', [LoggedController::class, 'create'])->middleware('loginReq');
+//Created post
+Route::post('/logged/create', [LoggedController::class, 'store'])->middleware('loginReq');
