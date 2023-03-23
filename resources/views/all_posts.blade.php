@@ -22,12 +22,16 @@
             @endforeach 
             </div>  
             @endif
-
-            <p></p> 
+            
+            <!-- Check if cover image is provided and display it -->
+            @if($post->coverimage !== null)
+            <img class="coverimage" src="{{asset($post->coverimage)}}" alt="Cover image">
+            @endif
+            
             <div class="postbody">
                 {{ $post->excerpt }}
             </div>
-            <p>by <a href="/authors/{{$post->author->username}}", class="link">{{$post->author->name}}</a></p> <!-- Author section -->
+            <p>by <a href="/authors/{{$post->author->username}}", class="link">{{$post->author->username}}</a></p> <!-- Author section -->
         </article>
     @endforeach
     <br>

@@ -8,17 +8,16 @@ class LogInController extends Controller
 {
     public function create()
     {
-        return view("auth.login");
+        return view("login");
     }
     public function store()
     {
-        //validate and log in a user
+        //validate
         $attributes= request()->validate([
             "email"=>"required",  //check if email is in db
             "password" => "required"
         
         ]);
-
         if(auth()->attempt($attributes))
         {
             return redirect("/") -> with("success", "You have succesfully logged in");

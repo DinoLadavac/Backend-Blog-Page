@@ -85,7 +85,7 @@ article + article {
 }
 .nav_buttons
 {
-    margin-top: 3%;
+    margin-top: 1%;
     background-color: lightgray;
     color: black;
     border-radius: 10%;
@@ -106,4 +106,16 @@ article + article {
     color: white;
     background-color: lightseagreen;
     border-radius: 3px;
+}
+.coverimagepost
+{
+    max-width: 700px;
+    max-height: 300px;
+    margin: auto;
+}
+.coverimage
+{
+    max-width: 500px;
+    max-height: 300px;
+    margin: auto;
 }

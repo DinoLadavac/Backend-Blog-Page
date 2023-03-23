@@ -42,3 +42,17 @@ Route::post('login',[LogInController::class,'store'])->middleware('guest');
 Route::get('/logged/create', [LoggedController::class, 'create'])->middleware('loginReq');
 //Created post
 Route::post('/logged/create', [LoggedController::class, 'store'])->middleware('loginReq');
+//Show all logged users post
+Route::get('/logged/posts', [LoggedController::class, 'index'])->middleware('loginReq');
+//Edit window of a post
+Route::get('/logged/posts/{post}/edit', [LoggedController::class, 'edit'])->middleware('loginReq');
+//Edit a post
+Route::patch('/logged/posts/{post}', [LoggedController::class, 'update'])->middleware('loginReq');
+//Delete a post
+Route::delete('/logged/posts/{post}', [LoggedController::class, 'destroy'])->middleware('loginReq');
+//Edit window for account
+Route::get('/logged/account/edit', [LoggedController::class, 'editAccount'])->middleware('loginReq');
+//Edit account
+Route::patch('/logged/account/edit', [LoggedController::class, 'updateAccount'])->middleware('loginReq');
+//Delete a post
+Route::delete('/logged/account/delete', [LoggedController::class, 'destroyAccount'])->middleware('loginReq');

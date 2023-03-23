@@ -17,7 +17,7 @@ class LogInOnly
     {
         if(auth()->guest())
         {
-            abort(Response::HTTP_FORBIDDEN);
+            return redirect("/");
         }
         return $next($request);
     }

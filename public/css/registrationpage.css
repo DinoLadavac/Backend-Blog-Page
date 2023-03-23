@@ -7,7 +7,8 @@ h1
     color: Black;
     text-align: center;
     margin-top: 70;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: lightslategray;
 }
 .parent
 {
@@ -31,4 +32,27 @@ h1
 {
     max-width: 400px;
     margin: auto;
+}
+.nav_buttons
+{
+    margin-top: 3%;
+    background-color: lightgray;
+    color: black;
+    border-radius: 10%;
+    text-decoration: none;
+    max-height: 25px;
+}
+.parentnav
+{
+    white-space: nowrap;
+}
+.childnav
+{
+    display: inline-block;
+    max-width: 100px;
+    max-height: 20px;
+    margin:auto;
+    text-decoration: none;
+    border: 0pt;
+    border-color: black;
 }

@@ -1,10 +1,12 @@
 @extends("layoutauth")
 @section("title")
-    Create a post
+    Edit post:
+    {{$post->title}}
 @endsection
 @section("default_section")
-    <form method="POST" action="/logged/create" enctype="multipart/form-data">
+    <form method="POST" action="/logged/posts/{{$post->id}}" enctype="multipart/form-data">
             @csrf
+            @method('PATCH')
             <div class="child">
             <label for="title">
                 Title: 
@@ -14,8 +16,9 @@
                 type="text"
                 name="title"
                 id="title" 
-                value="{{old('title')}}"
-                    required></div>
+                value="{{$post->title}}"
+                    required>
+            </div>
             <br>
             <div class="child">
             <label for="excerpt">
@@ -26,7 +29,7 @@
                 type="text"
                 name="excerpt"
                 id="excerpt" 
-                required>{{old('excerpt')}}</textarea></div>
+                required>{{$post->excerpt}}</textarea></div>
     
             <br>
             <div class="child">
@@ -37,7 +40,7 @@
             <textarea
                 name="body"
                 id="body"
-                required>{{old('body')}}</textarea></div>
+                required>{{$post->body}}</textarea></div>
     <br>
     <div class="child">
             <label for="tags">
@@ -61,16 +64,21 @@
             <input
                 type="file"
                 name="coverimage"
-                id="coverimage" 
+                id="coverimage"
+                value="{{$post->coverimage}}" 
                 >
         @error("coverimage")
             <p class="error"> Please select an image that doesn't exceed 2MB! </p>
-        @enderror
+        @enderror      
     </div>
+    <br>
+    @if($post->coverimage !== null)
+            <div class="child"><img width="200" display="block" src="{{asset($post->coverimage)}}" alt="Cover image"></div>
+        @endif
     <br>
     <div class="child nav_button">
         <button type="submit">
-            Publish post
+            Edit post
         </button></div>
 </form>
 @endsection

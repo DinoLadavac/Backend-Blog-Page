@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('excerpt');
             $table->text('body'); 
             $table->string('tags',50);
+            $table->string('coverimage')->nullable();
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
         });
