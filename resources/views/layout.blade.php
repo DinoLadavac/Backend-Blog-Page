@@ -1,6 +1,6 @@
 <!doctype html>
 <header>
-    <title> Lloyds Blog </title>
+    <title> Blog Page </title>
     <link rel="stylesheet" href="/css/mainpage.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </header>
