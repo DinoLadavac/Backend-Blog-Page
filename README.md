@@ -1,4 +1,4 @@
-<h1>Lloyds Blog</h1>
+<h1>Blog Page</h1>
 
 <p>This is an app for blog web page.
 
